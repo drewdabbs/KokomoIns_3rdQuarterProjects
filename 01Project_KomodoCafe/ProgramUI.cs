@@ -86,8 +86,9 @@ namespace _01Project_KomodoCafe
             //Description
             Console.WriteLine("\n\nPlease type out a description of the new item:\n\n");
             newItem.MealDescription = Console.ReadLine();
+
             //Ingredients
-            List<string> ingredientList = new List<string>();
+            newItem._Ingredients = new List<string>();
             Console.WriteLine("\n\nPlease type out the ingredients in the item separated by a comma.\n\n" +
                 "For example: american cheese, beef, lettuce, tomato.");
             string[] ingredientArray = Console.ReadLine().Split(',');
@@ -140,7 +141,12 @@ namespace _01Project_KomodoCafe
             Console.WriteLine($"Item/Meal Name: {menuItem.MealName}");
             Console.WriteLine($"Price: {menuItem.Price}");
             Console.WriteLine($"Description: {menuItem.MealDescription}");
-            Console.WriteLine($"A list of ingredients: {menuItem._Ingredients}");
+            //menuItem._Ingredients = string.Join(Environment.NewLine, menuItem._Ingredients);
+            foreach(string ingredient in menuItem._Ingredients)
+            {
+                Console.WriteLine(ingredient);
+            }
+            //Console.WriteLine($"A list of ingredients: {menuItem._Ingredients}");
         }
     }
 }
