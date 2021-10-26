@@ -55,10 +55,6 @@
       <Project>{743c72c4-0361-43f5-938f-4a0dd9b55f01}</Project>
       <Name>01Project_KomodoCafe_ClassList</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KomodoCafe_Repository\01KomodoCafe_Repository.csproj">
-      <Project>{A8EA30CC-1213-45C1-9FE0-29EB6B64EF19}</Project>
-      <Name>01KomodoCafe_Repository</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

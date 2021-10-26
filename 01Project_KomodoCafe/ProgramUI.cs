@@ -1,5 +1,4 @@
 ﻿using _01Project_KomodoCafe_ClassList;
-using KomodoCafe_Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +16,6 @@ namespace _01Project_KomodoCafe
         }
         public void RunMenu()
         {
-            
             bool continueToRun = true;
             while (continueToRun)
             {
@@ -86,13 +84,12 @@ namespace _01Project_KomodoCafe
             //Description
             Console.WriteLine("\n\nPlease type out a description of the new item:\n\n");
             newItem.MealDescription = Console.ReadLine();
-
             //Ingredients
             newItem._Ingredients = new List<string>();
             Console.WriteLine("\n\nPlease type out the ingredients in the item separated by a comma.\n\n" +
                 "For example: american cheese, beef, lettuce, tomato.");
             string[] ingredientArray = Console.ReadLine().Split(',');
-            foreach(string ingredient in ingredientArray)
+            foreach (string ingredient in ingredientArray)
             {
                 newItem._Ingredients.Add(ingredient);
             }
@@ -100,7 +97,6 @@ namespace _01Project_KomodoCafe
             _cafeRepo.AddNewItemToMenu(newItem);
             Console.WriteLine("\n\nItem Added. Please press any key to continue...");
             Console.ReadKey();
-
         }
         private void DeleteMenuItem()
         {
@@ -120,8 +116,6 @@ namespace _01Project_KomodoCafe
             {
                 Console.WriteLine("Menu item not found.");
             }
-
-
         }
         public void DisplayAllMenuItems()
         {
@@ -141,12 +135,11 @@ namespace _01Project_KomodoCafe
             Console.WriteLine($"Item/Meal Name: {menuItem.MealName}");
             Console.WriteLine($"Price: {menuItem.Price}");
             Console.WriteLine($"Description: {menuItem.MealDescription}");
-            //menuItem._Ingredients = string.Join(Environment.NewLine, menuItem._Ingredients);
-            foreach(string ingredient in menuItem._Ingredients)
+            Console.WriteLine("List of ingredients: ");
+            foreach (string ingredient in menuItem._Ingredients)
             {
                 Console.WriteLine(ingredient);
             }
-            //Console.WriteLine($"A list of ingredients: {menuItem._Ingredients}");
         }
     }
 }
