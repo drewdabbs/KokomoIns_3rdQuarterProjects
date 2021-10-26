@@ -17,9 +17,11 @@ namespace _01Project_KomodoCafe
         }
         public void RunMenu()
         {
+            
             bool continueToRun = true;
             while (continueToRun)
             {
+                Console.Clear();
                 Console.WriteLine("\n\nWelcome to your Komodo Cafe Menu Application.\n\n" +
                     "From here you can Make, Remove or List all items in the menu.\n\n" +
                     "Choose from the following:\n\n" +
@@ -31,13 +33,13 @@ namespace _01Project_KomodoCafe
                 switch (input)
                 {
                     case "1":
-                        // Add method
+                        AddNewMenuItem();
                         break;
                     case "2":
-                        // Remove
+                        DisplayAllMenuItems();
                         break;
                     case "3":
-                        DisplayAllMenuItems();
+                        DeleteMenuItem();
                         break;
                     case "4":
                         continueToRun = false;
@@ -49,6 +51,76 @@ namespace _01Project_KomodoCafe
                         break;
                 }
             }
+        }
+        private void AddNewMenuItem()
+        {
+            //Meal Number
+            Console.Clear();
+            KomodoCafeMenuItem newItem = new KomodoCafeMenuItem();
+            Console.WriteLine("Please enter the menu number: \n");
+            string newMealNum = Console.ReadLine();
+            try
+            {
+                newItem.MealNum = Convert.ToInt32(newMealNum);
+            }
+            catch
+            {
+                Console.WriteLine("\n\nLooks like there was an error. Meal mumbers are whole numbers. Please try again.");
+            }
+            //Meal Name
+            Console.WriteLine("\n\nWhat is the name of this item or meal?");
+            newItem.MealName = Console.ReadLine();
+            //Meal Price
+            Console.WriteLine("\n\nWhat is the price of this menu item, before applying tax?\n\n" +
+                "Note: This entry accepts decimal values so type out the dollar and cent amount.\n\n" +
+                "Example: 7.95");
+            string menuDouble = Console.ReadLine();
+            try
+            {
+                newItem.Price = Convert.ToDouble(menuDouble);
+            }
+            catch
+            {
+                Console.WriteLine("\n\nThere was an error reading your price. Please only enter the valuse in dollars and cents.");
+            }
+            //Description
+            Console.WriteLine("\n\nPlease type out a description of the new item:\n\n");
+            newItem.MealDescription = Console.ReadLine();
+            //Ingredients
+            List<string> ingredientList = new List<string>();
+            Console.WriteLine("\n\nPlease type out the ingredients in the item separated by a comma.\n\n" +
+                "For example: american cheese, beef, lettuce, tomato.");
+            string[] ingredientArray = Console.ReadLine().Split(',');
+            foreach(string ingredient in ingredientArray)
+            {
+                newItem._Ingredients.Add(ingredient);
+            }
+            //Add method
+            _cafeRepo.AddNewItemToMenu(newItem);
+            Console.WriteLine("\n\nItem Added. Please press any key to continue...");
+            Console.ReadKey();
+
+        }
+        private void DeleteMenuItem()
+        {
+
+            Console.Clear();
+            Console.WriteLine("Enter the meal item # you would like to delete: ");
+            string menuNum = Console.ReadLine();
+            int menuInt = Int32.Parse(menuNum);
+            KomodoCafeMenuItem menuItem = _cafeRepo.FindMenuItemByItemNum(menuInt);
+            if (menuItem.MealNum == menuInt)
+            {
+                _cafeRepo.DeleteByMenuItemNum(menuInt, menuItem);
+                Console.WriteLine("Menu item removed.");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Menu item not found.");
+            }
+
+
         }
         public void DisplayAllMenuItems()
         {

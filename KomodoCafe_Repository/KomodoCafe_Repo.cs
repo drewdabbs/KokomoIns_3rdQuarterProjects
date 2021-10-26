@@ -9,10 +9,10 @@ namespace KomodoCafe_Repository
 {
     public class KomodoCafe_Repo
     {
-        private Dictionary<int, KomodoCafeMenuItem> _menu = new Dictionary<int, KomodoCafeMenuItem>();
+        public Dictionary<int, KomodoCafeMenuItem> _menu = new Dictionary<int, KomodoCafeMenuItem>();
 
         //Create
-        private bool AddNewItemToMenu(KomodoCafeMenuItem menuItem)
+        public bool AddNewItemToMenu(KomodoCafeMenuItem menuItem)
         {
             int startCount = _menu.Count;
             _menu.Add(menuItem.MealNum, menuItem);
@@ -32,7 +32,7 @@ namespace KomodoCafe_Repository
         }
 
         //Delete
-        private bool DeleteByMenuItemNum(int menuKey, KomodoCafeMenuItem menuItem)
+        public bool DeleteByMenuItemNum(int menuKey, KomodoCafeMenuItem menuItem)
         {
             KomodoCafeMenuItem menuMeal = FindMenuItemByItemNum(menuKey);
             bool deleteResult = _menu.Remove(menuKey);
@@ -40,7 +40,7 @@ namespace KomodoCafe_Repository
         }
 
         //Find
-        private KomodoCafeMenuItem FindMenuItemByItemNum(int menuEntry)
+        public KomodoCafeMenuItem FindMenuItemByItemNum(int menuEntry)
         {
             foreach (KeyValuePair<int, KomodoCafeMenuItem> kvp in _menu)
             {
