@@ -16,14 +16,15 @@ namespace _01Project_KomodoCafe_ClassList
         public int MealNum { get; set; }
         public string MealName { get; set; }
         public string MealDescription { get; set; }
-        public string Ingredients { get; set; }
+        public List<string> _Ingredients { get; set; }
         public double Price { get; set; }
         public KomodoCafeMenuItem() { }
-        public KomodoCafeMenuItem(int mealNum, string mealName, string mealDescription, double price)
+        public KomodoCafeMenuItem(int mealNum, string mealName, string mealDescription, List<string> _ingredients, double price)
         {
             MealNum = mealNum;
             MealName = mealName;
             MealDescription = mealDescription;
+            _Ingredients = _ingredients;
             Price = price;
         }
     }
