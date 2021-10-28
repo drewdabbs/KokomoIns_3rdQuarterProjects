@@ -47,17 +47,17 @@ namespace _01UnitTests_KomodoCafe
         [TestMethod]
         public void Test_FindMenuItemByItemNum()
         {
-            KomodoCafeMenuItem menuItem = new KomodoCafeMenuItem();
-            menuItem.MealNum = 1;
-            _cafeRepo.AddNewItemToMenu(menuItem);
+            //KomodoCafeMenuItem menuItem = new KomodoCafeMenuItem();
+            //menuItem.MealNum = 1;
+            //_cafeRepo.AddNewItemToMenu(menuItem);
 
 
 
-            int menuItemInt = Convert.ToInt32(menuItem.MealNum);
-            int mealNumber = _cafeRepo.FindMenuItemByItemNum(menuItemInt);
+            //int menuItemInt = Convert.ToInt32(menuItem.MealNum);
+            //int mealNumber = _cafeRepo.FindMenuItemByItemNum(menuItemInt);
 
-            Assert.IsNotNull(mealNumber);
-            Assert.AreEqual(mealNumber, menuItem.MealNum);
+            //Assert.IsNotNull(mealNumber);
+            //Assert.AreEqual(mealNumber, menuItem.MealNum);
         }
     }
 
