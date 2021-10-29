@@ -31,10 +31,10 @@ namespace _02KomodoClaimsDept_ConsoleApp
                 switch (input)
                 {
                     case "1":
-                        //List of claims in the queue
+                        ShowAllCurrentClaims();
                         break;
                     case "2":
-                        //show the next claim and choose to work on it
+                        DisplayNextInQueueMenu();
                         break;
                     case "3":
                         AddNewClaim();
@@ -49,18 +49,36 @@ namespace _02KomodoClaimsDept_ConsoleApp
                 }
             }
         }
-        private void ShowAllCurrentClaims(Claim claim)
+        private void DisplayNextInQueueMenu()
         {
-            Queue<Claim> currentQueue = new Queue<Claim>();
+            Queue<Claim> firstInQueue = _claimsRepo.SeeAllClaims();
+            Console.Clear();
+            Console.WriteLine("\nThe next claim to be worked on is: {0}\n", firstInQueue.Peek());
+            Console.WriteLine("Would you care to take this claim and work on it? (y/n)");
+            while ((Console.ReadLine().ToLower() == "y")) ;
+            //
+            //while ((Console.ReadLine().ToLower() == "y"))
+            //{
+            //    firstInQueue.Dequeue();
+            //}
+            //string responseToQueue = Console.ReadLine().ToLower();
+
+        }
+        private void ShowAllCurrentClaims()
+        {
+            Queue<Claim> currentQueue = _claimsRepo.SeeAllClaims();
+            Console.Clear();
             foreach(Claim queuedClaim in currentQueue)
             {
                 Console.WriteLine("\nClaim ID _____ Claim Type _____ Claim Amount _____ Date of Incident _____ Date of Claim _____ ");
-                Console.WriteLine($" {claim.ClaimID} {claim.TypeOfCLaim} {claim.ClaimAmount} {claim.DateOfIncident} {claim.DateOfClaim}");
-                Console.WriteLine($"\nDescription:  {claim.Description }");
+                Console.WriteLine($"\n    {queuedClaim.ClaimID}            {queuedClaim.TypeOfCLaim}            {queuedClaim.ClaimAmount}              {queuedClaim.DateOfIncident.ToString("MMM dd yyyy")}           {queuedClaim.DateOfClaim.ToString("MMM dd yyyy")}");
+                Console.WriteLine($"\nDescription:  {queuedClaim.Description }");
                 Console.WriteLine($"\n Is it true or false that the claim was submitted on time?\n" +
-                    $"{claim.IsValid}");
+                    $"\n{queuedClaim.IsValid}\n");
+                Console.WriteLine("_________________________________________________\n");
             }
-            
+            Console.WriteLine("\n\nPress any key to continue...");
+            Console.ReadKey();
         }
         private void AddNewClaim()
         {
