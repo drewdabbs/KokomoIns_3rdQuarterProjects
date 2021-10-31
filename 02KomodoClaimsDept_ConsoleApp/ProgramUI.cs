@@ -53,6 +53,8 @@ namespace _02KomodoClaimsDept_ConsoleApp
         {
             Queue<Claim> firstInQueue = _claimsRepo.SeeAllClaims();
             Console.Clear();
+            //Console.WriteLine("\nClaim ID _____ Claim Type _____ Claim Amount _____ Date of Incident _____ Date of Claim _____ ");
+            //Console.WriteLine($"\n    {firstInQueue.ClaimID.Peek()}            {firstInQueue.TypeOfCLaim}            {firstInQueue.ClaimAmount}              {firstInQueue.DateOfIncident.ToString("MMM dd yyyy")}           {firstInQueue.DateOfClaim.ToString("MMM dd yyyy")}");
             Console.WriteLine("\nThe next claim to be worked on is: {0}\n", firstInQueue.Peek());
             Console.WriteLine("Would you care to take this claim and work on it? (y/n)");
             while ((Console.ReadLine().ToLower() == "y")) ;

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02KomodoClaimsDept_ConsoleA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02KomodoClaimsDept_ClassLibrary", "02KomodoClaimsDept_ClassLibrary\02KomodoClaimsDept_ClassLibrary.csproj", "{C52A3E29-EAC6-4CF9-9924-84376051F62E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02KomodoClaimsDept_UnitTests", "02KomodoClaimsDept_UnitTests\02KomodoClaimsDept_UnitTests.csproj", "{F1AE5977-879F-4933-BE62-DA93674F0253}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C52A3E29-EAC6-4CF9-9924-84376051F62E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C52A3E29-EAC6-4CF9-9924-84376051F62E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C52A3E29-EAC6-4CF9-9924-84376051F62E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1AE5977-879F-4933-BE62-DA93674F0253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1AE5977-879F-4933-BE62-DA93674F0253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1AE5977-879F-4933-BE62-DA93674F0253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1AE5977-879F-4933-BE62-DA93674F0253}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
