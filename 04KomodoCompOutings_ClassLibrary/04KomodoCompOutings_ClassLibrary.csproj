@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompanyOutings_Repo.cs" />
     <Compile Include="Outings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
