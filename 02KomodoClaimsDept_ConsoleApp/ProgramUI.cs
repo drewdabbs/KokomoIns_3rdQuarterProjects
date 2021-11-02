@@ -26,7 +26,7 @@ namespace _02KomodoClaimsDept_ConsoleApp
                     "\n\n1. See a list of all claims." +
                     "\n\n2. Display and choose to work on the next avalible claim." +
                     "\n\n3. Add a new claim." +
-                    "\n\n4. Exit.");
+                    "\n\n4. Exit.\n\n");
                 string input = Console.ReadLine();
                 switch (input)
                 {
@@ -52,19 +52,22 @@ namespace _02KomodoClaimsDept_ConsoleApp
         private void DisplayNextInQueueMenu()
         {
             Queue<Claim> firstInQueue = _claimsRepo.SeeAllClaims();
+            Claim firstClaim = firstInQueue.Peek();
             Console.Clear();
-            //Console.WriteLine("\nClaim ID _____ Claim Type _____ Claim Amount _____ Date of Incident _____ Date of Claim _____ ");
-            //Console.WriteLine($"\n    {firstInQueue.ClaimID.Peek()}            {firstInQueue.TypeOfCLaim}            {firstInQueue.ClaimAmount}              {firstInQueue.DateOfIncident.ToString("MMM dd yyyy")}           {firstInQueue.DateOfClaim.ToString("MMM dd yyyy")}");
-            Console.WriteLine("\nThe next claim to be worked on is: {0}\n", firstInQueue.Peek());
-            Console.WriteLine("Would you care to take this claim and work on it? (y/n)");
-            while ((Console.ReadLine().ToLower() == "y")) ;
-            //
-            //while ((Console.ReadLine().ToLower() == "y"))
-            //{
-            //    firstInQueue.Dequeue();
-            //}
-            //string responseToQueue = Console.ReadLine().ToLower();
-
+            Console.WriteLine("\nClaim ID _____ Claim Type _____ Claim Amount _____ Date of Incident _____ Date of Claim _____ ");
+            Console.WriteLine($"\n    {firstClaim.ClaimID}            {firstClaim.TypeOfCLaim}            {firstClaim.ClaimAmount}              {firstClaim.DateOfIncident.ToString("MMM dd yyyy")}          {firstClaim.DateOfClaim.ToString("MMM dd yyyy")}");
+            Console.WriteLine($"\nDescription:  {firstClaim.Description }");
+            Console.WriteLine($"\n Is it true or false that the claim was submitted on time?\n" +
+                $"\n{firstClaim.IsValid}\n");
+            
+            Console.WriteLine("\n\nWould you care to take this claim and work on it? (y/n)\n\n");
+            while ((Console.ReadLine().ToLower() == "y"))
+            {
+                firstInQueue.Dequeue();
+                Console.WriteLine("\n\nYou have begun working on the claim and it has been removed from the queue.\n\n");
+            }
+            Console.WriteLine("\nPress any key to continue...\n");
+            Console.ReadKey();
         }
         private void ShowAllCurrentClaims()
         {
