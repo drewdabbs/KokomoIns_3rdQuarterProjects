@@ -20,5 +20,16 @@ namespace _04KomodoCompOutings_ClassLibrary
         {
             return _outings;
         }
+        public Outings ListAllOutingDates(DateTime eventDate)
+        {
+            foreach(Outings outing in _outings)
+            {
+                if(outing.EventDate == eventDate)
+                {
+                    return outing;
+                }
+            }
+            return null;
+        }
     }
 }
