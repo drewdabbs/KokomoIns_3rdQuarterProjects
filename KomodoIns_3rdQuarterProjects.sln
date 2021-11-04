@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01Project_KomodoCafe", "01Project_KomodoCafe\01Project_KomodoCafe.csproj", "{5E8FEC07-4048-405F-ACEB-87462ECC3AC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01Project_KomodoCafe_App", "01Project_KomodoCafe\01Project_KomodoCafe_App.csproj", "{5E8FEC07-4048-405F-ACEB-87462ECC3AC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01Project_KomodoCafe_ClassList", "01Project_KomodoCafe_ClassList\01Project_KomodoCafe_ClassList.csproj", "{743C72C4-0361-43F5-938F-4A0DD9B55F01}"
 EndProject

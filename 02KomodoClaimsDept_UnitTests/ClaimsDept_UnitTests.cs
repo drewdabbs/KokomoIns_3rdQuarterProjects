@@ -32,5 +32,12 @@ namespace _02KomodoClaimsDept_UnitTests
 
             Assert.IsNotNull(allQueued);
         }
+        [TestMethod]
+        public void Test_DequeueClaim()
+        {
+            bool claimDeleted = _claimsRepo.DequeueClaim(_claim);
+
+            Assert.IsTrue(claimDeleted);
+        }
     }
 }
