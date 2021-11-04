@@ -21,15 +21,15 @@ namespace _04KomodoCompOutings_ConsoleApp
             while (runApp)
             {
                 Console.Clear();
-                Console.WriteLine("\nWelcome to the Komodo Slush Fund Tracker: Company Outings Application.\n" +
-                    "Below is the menu for sellecting the approriate action.\n" +
-                    "Type the number and hit the enter key to select the action:\n" +
-                    "1. Show a list of all outings of any type.\n" +
-                    "2. Add an outing to our database.\n" +
-                    "3. Show outings by date.\n" +
-                    "4. Show cost of outings combined.\n" +
-                    "5. Find cost of outings by type of outing.\n" +
-                    "6. Exit the application.");
+                Console.WriteLine("\nWelcome to the Komodo Slush Fund Tracker: Company Outings Application.\n\n" +
+                    "Below is the menu for sellecting the approriate action.\n\n" +
+                    "Type the number and hit the enter key to select the action:\n\n\n" +
+                    "1. Show a list of all outings of any type.\n\n" +
+                    "2. Add an outing to our database.\n\n" +
+                    "3. Show outings by date.\n\n" +
+                    "4. Show cost of outings combined.\n\n" +
+                    "5. Find cost of outings by type of outing.\n\n" +
+                    "6. Exit the application.\n\n");
                 string menuOption = Console.ReadLine();
                 switch (menuOption)
                 {
@@ -85,6 +85,7 @@ namespace _04KomodoCompOutings_ConsoleApp
         }
         private void ShowAllOutings()
         {
+            Console.Clear();
             List<Outings> outingsList = _outingsRepo.ListAllOutings();
             foreach (Outings outing in outingsList)
             {
@@ -98,17 +99,14 @@ namespace _04KomodoCompOutings_ConsoleApp
         public void CreateOuting()
         {
             Outings newOuting = new Outings();
-            bool createMenu = true;
-            while (createMenu)
-            {
                 Console.Clear();
-                Console.WriteLine("\nSo, you would like to add a new outing to our company listserve.\n" +
-                    "First, what type of company event was this?\n" +
-                    "1. A golfing trip.\n" +
-                    "2. A bowling get together.\n" +
-                    "3. A trip to the local amuzement park.\n" +
-                    "4. A concert.\n" +
-                    "5. Exit.");
+                Console.WriteLine("\nSo, you would like to add a new outing to our company listserve.\n\n" +
+                    "First, what type of company event was this?\n\n\n" +
+                    "1. A golfing trip.\n\n" +
+                    "2. A bowling get together.\n\n" +
+                    "3. A trip to the local amuzement park.\n\n" +
+                    "4. A concert.\n\n" +
+                    "5. Exit.\n\n");
                 string menuNum = Console.ReadLine();
                 switch (menuNum)
                 {
@@ -124,16 +122,12 @@ namespace _04KomodoCompOutings_ConsoleApp
                     case "4":
                         newOuting.TypeOfEvent = EventType.Concert;
                         break;
-                    case "5":
-                        createMenu = false;
-                        break;
                     default:
-                        Console.WriteLine("In Valid number entered. Please enter a number between 1 and 5\n" +
+                        Console.WriteLine("In Valid number entered. Please enter a number between 1 and 4\n" +
                             "Press any key to continue...\n");
                         Console.ReadKey();
                         break;
                 }
-            }
             Console.Clear();
             Console.WriteLine("\nHow many people were in attendance?\n");
             string numAttend = Console.ReadLine();
@@ -147,7 +141,9 @@ namespace _04KomodoCompOutings_ConsoleApp
                 Console.WriteLine("\nNumber was not captured or recognized, please try again...");
             }
             Console.Clear();
-            Console.WriteLine("\nWhat was the date of the event?\n");
+            Console.WriteLine("\nWhat was the date of the event?\n" +
+                "\nPlease enter the date of the event in the following format: Mon,##, ####.\n" +
+                "As in Jan, 1, 2001\n");
             string eventDate = Console.ReadLine();
             DateTime dateOfEvent = DateTime.Parse(eventDate);
             newOuting.EventDate = dateOfEvent;
@@ -157,6 +153,9 @@ namespace _04KomodoCompOutings_ConsoleApp
             decimal costPerPerson = decimal.Parse(perPerson);
             newOuting.CostPer = costPerPerson;
             _outingsRepo.AddAnOuting(newOuting);
+            Console.WriteLine("Event has been added to the database.\n" +
+                "Press any key to continue...\n\n");
+            Console.ReadKey();
         }
         private void ShowOutingsByDateTime()
         {

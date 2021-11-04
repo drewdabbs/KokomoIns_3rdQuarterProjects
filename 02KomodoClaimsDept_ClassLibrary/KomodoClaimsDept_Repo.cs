@@ -20,6 +20,13 @@ namespace _02KomodoClaimsDept_ClassLibrary
         {
             return _queueList;
         }
+        public bool DequeueClaim(Claim claim)
+        {
+            int startingCount = _queueList.Count;
+            _queueList.Dequeue();
+            bool wasDeleted = _queueList.Count < startingCount ? true : false;
+            return wasDeleted;
+        }
     }
     
 }

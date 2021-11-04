@@ -63,7 +63,7 @@ namespace _02KomodoClaimsDept_ConsoleApp
             Console.WriteLine("\n\nWould you care to take this claim and work on it? (y/n)\n\n");
             while ((Console.ReadLine().ToLower() == "y"))
             {
-                firstInQueue.Dequeue();
+                _claimsRepo.DequeueClaim(firstClaim);
                 Console.WriteLine("\n\nYou have begun working on the claim and it has been removed from the queue.\n\n" +
                     "\nPress any key to continue...\n");
             }
