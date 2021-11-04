@@ -64,10 +64,9 @@ namespace _02KomodoClaimsDept_ConsoleApp
             while ((Console.ReadLine().ToLower() == "y"))
             {
                 firstInQueue.Dequeue();
-                Console.WriteLine("\n\nYou have begun working on the claim and it has been removed from the queue.\n\n");
+                Console.WriteLine("\n\nYou have begun working on the claim and it has been removed from the queue.\n\n" +
+                    "\nPress any key to continue...\n");
             }
-            Console.WriteLine("\nPress any key to continue...\n");
-            Console.ReadKey();
         }
         private void ShowAllCurrentClaims()
         {

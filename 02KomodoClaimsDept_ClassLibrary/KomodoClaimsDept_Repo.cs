@@ -20,10 +20,6 @@ namespace _02KomodoClaimsDept_ClassLibrary
         {
             return _queueList;
         }
-        //public Queue<Claim> FindFirstClaim()
-        //{
-        //    return _queueList.Peek();
-        //}
     }
     
 }

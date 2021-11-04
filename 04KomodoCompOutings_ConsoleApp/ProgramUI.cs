@@ -61,32 +61,18 @@ namespace _04KomodoCompOutings_ConsoleApp
         }
         private void FindCostByOuting()
         {
+            Console.Clear();
             List<Outings> outingsList = _outingsRepo.ListAllOutings();
-            
-            
-            //var costByOuting =
-            //    from outing in outingsList
-            //    group outing by outing.TypeOfEvent into eventTypes
-            //    select new
-            //    {
-            //        Event = eventTypes.Key,
-            //        OutingCost = eventTypes.Sum(cost => cost.TotalCost)
-            //    };
-            
-            //Console.WriteLine($"Total cost is: {costByOuting}");
-            //Console.ReadKey();
-            
-            
-            //foreach (Outings outing in outingsList)
-            //{
-            //    if(outing.TypeOfEvent == EventType.Golf)
-            //    {
-            //        decimal golfCost = outing.TotalCost;
-            //    }
-            //    return 
-            //    //outing.TypeOfEvent = EventType.Golf;
-            //    //decimal golfCost = outing.Sum(totalCost => totalCost.TotalCost);
-            //}
+
+            var outingCost = outingsList.GroupBy(type => type.TypeOfEvent).Select(type => new
+            {
+                TypeOfEvent = type.Key,
+                TotalCost = type.Sum(totalAmount => totalAmount.TotalCost)
+            }).ToList();
+            outingCost.ForEach(
+                row => Console.WriteLine($"\n Type of outing: {row.TypeOfEvent}, and it's current total cost: {row.TotalCost}\n"));
+            Console.WriteLine("\n\nPress any key to continue...");
+            Console.ReadKey();
         }
         private void SumOfAllOutings()
         {

@@ -8,56 +8,52 @@ namespace _01UnitTests_KomodoCafe
     [TestClass]
     public class Test_KomodoCafeMethods
     {
-        KomodoCafe_Repo _cafeRepo = new KomodoCafe_Repo();
+        private KomodoCafe_Repo _cafeRepo;
+        private KomodoCafeMenuItem _menuItem;
 
+        [TestInitialize]
+        public void Arrange()
+        {
+            _cafeRepo = new KomodoCafe_Repo();
+            _menuItem = new KomodoCafeMenuItem(5, "Tomato Soup and Grilled Cheese Sandwich", "Creamy tomato and basil soup served with our 3 cheese grilled cheese sandwich.", new List<string> { "Tomato", "condensed milk", "basil", "sourdouogh bread", "cheddar cheese", "havarti cheese", "provolone cheese", "salt", "pepper" }, 11.25);
+            _cafeRepo.AddNewItemToMenu(_menuItem);
+        }
         [TestMethod]
         public void Test_AddNewItemToMenu()
         {
-            
-            KomodoCafeMenuItem menuItem = new KomodoCafeMenuItem();
-            List<KomodoCafeMenuItem> menuList = _cafeRepo.ShowAllMenuItems();
-            int count = menuList.Count;
+            bool itemAdded = _cafeRepo.AddNewItemToMenu(_menuItem);
 
-            _cafeRepo.AddNewItemToMenu(menuItem);
-
-            List<KomodoCafeMenuItem> updatedMenuList = _cafeRepo.ShowAllMenuItems();
-            int newCount = updatedMenuList.Count;
-
-            bool result = newCount == (count + 1) ? true : false;
+            Assert.AreEqual(true, itemAdded);
         }
         [TestMethod]
         public void Test_ShowAllMenuItems()
         {
-            
+            List<KomodoCafeMenuItem> _menuList = _cafeRepo.ShowAllMenuItems();
+
+            Assert.IsNotNull(_menuList);
 
         }
         [TestMethod]
         public void Test_DeleteByMenuItemNumber()
         {
-            KomodoCafeMenuItem menuItem = new KomodoCafeMenuItem();
-            menuItem.MealNum = 1;
-            _cafeRepo.AddNewItemToMenu(menuItem);
+            //KomodoCafeMenuItem menuItem = _cafeRepo.DeleteByMenuItemNum(_menuItem.MealNum, menuItem);
 
-            bool actual = _cafeRepo.DeleteByMenuItemNum(1,menuItem);
-            bool expected = true;
+            bool itemDeleted = _cafeRepo.DeleteByMenuItemNum(_menuItem.MealName);
+            //menuItem.MealNum = 1;
+            //_cafeRepo.AddNewItemToMenu(menuItem);
 
-            Assert.AreEqual(expected, actual);
+            //bool actual = _cafeRepo.DeleteByMenuItemNum(1,menuItem);
+            //bool expected = true;
+
+            //Assert.AreEqual(expected, actual);
 
         }
         [TestMethod]
         public void Test_FindMenuItemByItemNum()
         {
-            //KomodoCafeMenuItem menuItem = new KomodoCafeMenuItem();
-            //menuItem.MealNum = 1;
-            //_cafeRepo.AddNewItemToMenu(menuItem);
+            KomodoCafeMenuItem menuItem = _cafeRepo.FindMenuItemByItemNum(_menuItem.MealNum);
 
-
-
-            //int menuItemInt = Convert.ToInt32(menuItem.MealNum);
-            //int mealNumber = _cafeRepo.FindMenuItemByItemNum(menuItemInt);
-
-            //Assert.IsNotNull(mealNumber);
-            //Assert.AreEqual(mealNumber, menuItem.MealNum);
+            Assert.IsNotNull(menuItem);
         }
     }
 
