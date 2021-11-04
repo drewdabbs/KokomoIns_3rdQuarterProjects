@@ -10,18 +10,20 @@ namespace _01UnitTests_KomodoCafe
     {
         private KomodoCafe_Repo _cafeRepo;
         private KomodoCafeMenuItem _menuItem;
+        private KomodoCafeMenuItem _menuItem2;
 
         [TestInitialize]
         public void Arrange()
         {
             _cafeRepo = new KomodoCafe_Repo();
             _menuItem = new KomodoCafeMenuItem(5, "Tomato Soup and Grilled Cheese Sandwich", "Creamy tomato and basil soup served with our 3 cheese grilled cheese sandwich.", new List<string> { "Tomato", "condensed milk", "basil", "sourdouogh bread", "cheddar cheese", "havarti cheese", "provolone cheese", "salt", "pepper" }, 11.25);
+            _menuItem2 = new KomodoCafeMenuItem(6, "House Salad", "Mix of iceberg and romaine lettuce, cherry tomatoes, red onion, feta cheese is optional.", new List<string> { "Iceberg lettuce", "Romaine lettuce", "cherry tomatoes", "feta cheese", "house dressing" }, 9.25);
             _cafeRepo.AddNewItemToMenu(_menuItem);
         }
         [TestMethod]
         public void Test_AddNewItemToMenu()
         {
-            bool itemAdded = _cafeRepo.AddNewItemToMenu(_menuItem);
+            bool itemAdded = _cafeRepo.AddNewItemToMenu(_menuItem2);
 
             Assert.AreEqual(true, itemAdded);
         }
