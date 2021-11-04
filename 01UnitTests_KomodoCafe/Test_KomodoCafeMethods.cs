@@ -36,17 +36,10 @@ namespace _01UnitTests_KomodoCafe
         [TestMethod]
         public void Test_DeleteByMenuItemNumber()
         {
-            //KomodoCafeMenuItem menuItem = _cafeRepo.DeleteByMenuItemNum(_menuItem.MealNum, menuItem);
 
-            bool itemDeleted = _cafeRepo.DeleteByMenuItemNum(_menuItem.MealName);
-            //menuItem.MealNum = 1;
-            //_cafeRepo.AddNewItemToMenu(menuItem);
+            bool itemDeleted = _cafeRepo.DeleteByMenuItemNum(_menuItem.MealNum, _menuItem);
 
-            //bool actual = _cafeRepo.DeleteByMenuItemNum(1,menuItem);
-            //bool expected = true;
-
-            //Assert.AreEqual(expected, actual);
-
+            Assert.IsTrue(itemDeleted);
         }
         [TestMethod]
         public void Test_FindMenuItemByItemNum()
